@@ -3,6 +3,7 @@ from ..boot import PROJECT_DIR
 from google.appengine.ext.testbed import Testbed
 from urllib2 import HTTPError, URLError
 import logging
+import os
 import time
 
 REMOTE_API_SCRIPTS = (
@@ -34,6 +35,9 @@ class StubManager(object):
     def activate_test_stubs(self):
         if self.active_stubs == 'test':
             return
+
+        os.environ['HTTP_HOST'] = "%s.appspot.com" % appid
+
         self.testbed.activate()
         self.pre_test_stubs = self.active_stubs
         self.active_stubs = 'test'
