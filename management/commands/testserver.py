@@ -40,7 +40,11 @@ class Command(BaseCommand):
                     settings[key] = "%s-testdb" % path
                 break
 
-        # reset stub manager
+        # reset connections list so its repopulated
+        db.connections._connections = {}
+        db.connection = db.connections[db.DEFAULT_DB_ALIAS]
+
+        # also reset stub manager
         stub_manager.active_stubs = None
 
         # run flush on that db
