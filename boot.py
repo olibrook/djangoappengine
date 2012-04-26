@@ -3,7 +3,8 @@ import os
 import sys
 
 
-PROJECT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_DIR = os.environ.get('APPENGINE_PROJECT_DIR',
+        os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 DATA_ROOT = os.path.join(PROJECT_DIR, '.gaedata')
 
 # Overrides for os.environ.
