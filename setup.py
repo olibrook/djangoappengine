@@ -11,9 +11,7 @@ except:
 
 setup(name='djangoappengine',
       version='1.0',
-      package_dir={'djangoappengine': '.'},
-      packages=['djangoappengine'] + ['djangoappengine.' + name
-                                      for name in find_packages()],
+      packages=find_packages(),
       author='Waldemar Kornewald',
       author_email='wkornewald@gmail.com',
       url='http://www.allbuttonspressed.com/projects/djangoappengine',
